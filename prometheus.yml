@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # 1. Monitoring des ressources matérielles (CPU, RAM des conteneurs)
+  - job_name: 'docker-infra'
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  # 2. Monitoring de l'état de Prometheus lui-même
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prometheus:9090']
+
+  # Monitoring du trafic HTTP (Traefik)
+  - job_name: 'traefik'
+    static_configs:
+      - targets: ['traefik:8080']
