@@ -40,7 +40,8 @@ services:
       - GF_SERVER_ROOT_URL=https://sweek.ovh/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
     volumes:
-      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
       - ./grafana_data:/var/lib/grafana
     networks: [app-network]
     restart: always
@@ -70,6 +71,10 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.external-url=https://sweek.ovh/prometheus/'
+      - "--metrics.prometheus=true"
+      - "--entrypoints.metrics.address=:8080"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     networks: [app-network]
     restart: always
 
