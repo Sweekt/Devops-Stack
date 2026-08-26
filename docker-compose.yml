@@ -18,6 +18,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       - "--metrics.prometheus=true"
       - "--entrypoints.metrics.address=:8082"
+      - "--metrics.prometheus.entryPoint=metrics"
     ports:
       - "80:80"
       - "443:443"

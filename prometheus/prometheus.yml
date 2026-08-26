@@ -10,6 +10,7 @@ scrape_configs:
 
   # 2. Monitoring de l'état de Prometheus lui-même
   - job_name: 'prometheus'
+    metrics_path: '/prometheus/metrics'
     static_configs:
       - targets: ['prometheus:9090']
 
