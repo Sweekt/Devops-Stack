@@ -16,4 +16,4 @@ scrape_configs:
   # Monitoring du trafic HTTP (Traefik)
   - job_name: 'traefik'
     static_configs:
-      - targets: ['traefik:8080']
+      - targets: ['traefik:8082']

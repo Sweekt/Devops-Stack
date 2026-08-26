@@ -17,7 +17,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.email=benjamin.roy69@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       - "--metrics.prometheus=true"
-      - "--entrypoints.metrics.address=:8080"
+      - "--entrypoints.metrics.address=:8082"
     ports:
       - "80:80"
       - "443:443"
